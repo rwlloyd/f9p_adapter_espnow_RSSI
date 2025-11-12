@@ -126,6 +126,6 @@ void loop() {
     Serial.println("Error sending the data");
   }
   // get about 20-50 messages out then everything stops..... lets try
-  delay(5);           // Let Wi-Fi/ESP-NOW process
+  delay(750);           // Let Wi-Fi/ESP-NOW process
   yield();             // Prevent watchdog resets
 }
