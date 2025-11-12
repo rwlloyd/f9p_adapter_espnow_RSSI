@@ -32,3 +32,11 @@ This must be fixed in the future.
 
 The base station is simply a bare ESP32.
 
+## Tools
+
+Convert decimal to dms coordinates.
+
+https://www.latlong.net/lat-long-dms.html
+
+
+
