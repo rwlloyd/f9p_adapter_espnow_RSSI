@@ -44,8 +44,8 @@ void OnDataRecv(const esp_now_recv_info_t *recv_info, const uint8_t *incomingDat
   //-------- for debug
   // Serial.print("Struct size: ");
   // Serial.println(sizeof(struct_message));
-  Serial.print("Free heap: ");
-  Serial.println(ESP.getFreeHeap());
+  // Serial.print("Free heap: ");
+  // Serial.println(ESP.getFreeHeap());
 }
 #else
 // Legacy style for Arduino-ESP32 2.x

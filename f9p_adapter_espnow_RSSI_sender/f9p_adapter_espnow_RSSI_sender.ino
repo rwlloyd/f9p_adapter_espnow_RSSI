@@ -183,11 +183,12 @@ void loop() {
   // Send message via ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&data_packet, sizeof(data_packet));
   // esp_now_send(broadcastAddress, (uint8_t *)&data_packet, sizeof(data_packet));
-    //-------- for debug
+    
+  //-------- for debug
   // Serial.print("Struct size: ");
   // Serial.println(sizeof(struct_message));
-  Serial.print("Free heap: ");
-  Serial.println(ESP.getFreeHeap());
+  // Serial.print("Free heap: ");
+  // Serial.println(ESP.getFreeHeap());
 
   if (result == ESP_OK) {
     Serial.println("Sent with success");
