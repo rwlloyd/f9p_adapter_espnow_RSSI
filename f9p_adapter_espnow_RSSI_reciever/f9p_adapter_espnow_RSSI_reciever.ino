@@ -67,6 +67,8 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
 void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
+  WiFi.disconnect(); // ensure we’re not connected to anything
+  WiFi.channel(13);   // <-- set desired channel (1–13, usually 1, 6, or 11)
 
   // Initialize ESP-NOW
   if (esp_now_init() != ESP_OK) {
