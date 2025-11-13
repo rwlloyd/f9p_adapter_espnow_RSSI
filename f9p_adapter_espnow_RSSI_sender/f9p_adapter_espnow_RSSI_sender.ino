@@ -16,7 +16,7 @@ SFE_UBLOX_GNSS_SERIAL myGNSS;
 #include <WiFi.h>
 
 // MAC address of the receiver
-uint8_t broadcastAddress[] = {0xF8, 0xB3, 0xB7, 0x29, 0xFB, 0x3C};
+uint8_t broadcastAddress[] = {0x68, 0x25, 0xDD, 0xEF, 0x49, 0x80};
 
 // Variable to add info about peer
 esp_now_peer_info_t peerInfo;
@@ -90,7 +90,7 @@ void setup() {
   // while (!Serial); 
 
   // Start i2c Comms
-  Wire.begin();
+  Wire.begin(21,22);
   Serial.println("Trying to setup IST8310");
   bool success = ist8310.setup(&Wire, &Serial);
   if (!success) {
@@ -107,6 +107,8 @@ void setup() {
   //ESPNOW / Comms setup
   // Set device as a Wi-Fi Station
   WiFi.mode(WIFI_STA);
+  // WiFi.disconnect(); // ensure we’re not connected to anything
+  // WiFi.channel(13);   // <-- set desired channel (1–13, usually 1, 6, or 11)
 
   // Init ESP-NOW
   if (esp_now_init() != ESP_OK) {
