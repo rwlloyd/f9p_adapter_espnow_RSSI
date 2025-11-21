@@ -6,7 +6,7 @@ from folium.plugins import HeatMap
 import pandas as pd
 
 # Load CSV
-df = pd.read_csv("20251113-all_fixed.csv", header=None,
+df = pd.read_csv("20251117-1_fixed.csv", header=None,
                  names=["rssi", "lat", "lon", "alt", "heading"])
 
 # Ensure correct data types
@@ -28,12 +28,12 @@ m = folium.Map(location=[53.26831, -0.52984], zoom_start=15)  ## Hardcoded becau
 # Add heatmap
 HeatMap(
     heat_data,
-    radius=20,
-    blur=18,
-    max_zoom=17,
+    radius=15, #20
+    blur=15, #18
+    max_zoom=20,
     min_opacity=0.3
 ).add_to(m)
 
-m.save("gps_heatmap-all.html")
+m.save("gps_heatmap-20251117-1.html")
 print("Saved to gps_heatmap.html")
 

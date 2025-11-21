@@ -2,12 +2,12 @@ import pandas as pd
 import folium
 
 # Load CSV
-df = pd.read_csv("20251113-2.csv", header=None, names=["rssi", "lat_raw", "lon_raw", "alt_raw", "heading"])
+df = pd.read_csv("20251117-1_fixed.csv", header=None, names=["rssi", "lat_raw", "lon_raw", "alt_raw", "heading"])
 
 # Convert to proper lat/lon/alt
-df["lat"] = df["lat_raw"] / 1e7
-df["lon"] = df["lon_raw"] / 1e7
-df["alt"] = df["alt_raw"] / 1e3  # if in millimetres, otherwise adjust as needed
+df["lat"] = df["lat_raw"]
+df["lon"] = df["lon_raw"]
+df["alt"] = df["alt_raw"] # if in millimetres, otherwise adjust as needed
 
 # Make Folium map centered on average point
 m = folium.Map(location=[df["lat"].mean(), df["lon"].mean()], zoom_start=17)

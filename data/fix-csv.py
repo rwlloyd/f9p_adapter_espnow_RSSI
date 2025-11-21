@@ -3,8 +3,8 @@
 
 import csv
 
-input_file = "20251113-2.csv"
-output_file = "20251113-2_fixed.csv"
+input_file = "20251117-1.cap"
+output_file = "20251117-1_fixed.csv"
 
 with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
     reader = csv.reader(f_in)

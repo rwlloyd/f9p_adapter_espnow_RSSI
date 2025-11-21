@@ -2,6 +2,13 @@
 // f9p datasheet https://docs.holybro.com/gps-and-rtk-system/f9p-h-rtk-series/standard-f9p-uart/pinout
 // IST8310 datasheet https://tw.isentek.com/userfiles/files/IST8310Datasheet_3DMagneticSensors.pdf
 
+// NEOPIXEL - for a little feedback
+#include <Adafruit_NeoPixel.h>
+#define NEOPIXEL_PIN 5
+#define NUM_PIXELS 1
+
+Adafruit_NeoPixel pixel(NUM_PIXELS, NEOPIXEL_PIN, NEO_RGB + NEO_KHZ800); //<- not sure about last argument
+
 // HEADING
 #include "IST8310.h"  // Include IST8310 library for I2C comms https://github.com/Srijal97/IST8310/tree/main
 IST8310 ist8310; // Instantiate IST8310 reader library
@@ -64,6 +71,11 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 
 
 void setup() {
+  // Initialise the Neopixel
+  pixel.begin();
+  pixel.clear(); // turns everything off
+  pixel.show();
+
   // Start Serial Comms
   Serial.begin(115200); 
   delay(250);
@@ -175,6 +187,12 @@ void getHeading()
   }
 }
 
+//helper function to set the Neopixel colour
+void setColour(uint8_t r,uint8_t g,uint8_t b){
+  pixel.setPixelColor(0,pixel.Color(r,g,b));
+  pixel.show();
+}
+
 void loop() {
 
   // LOCATION
@@ -194,9 +212,11 @@ void loop() {
 
   if (result == ESP_OK) {
     Serial.println("Sent with success");
+    setColour(0,255,0);
   }
   else {
     Serial.println("Error sending the data");
+    setColour(255,0,0);
   }
   // get about 20-50 messages out then everything stops..... lets try
   delay(5);           // Let Wi-Fi/ESP-NOW process
