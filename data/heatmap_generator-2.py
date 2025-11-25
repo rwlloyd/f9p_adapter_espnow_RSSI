@@ -81,5 +81,5 @@ HeatMap(
     min_opacity=0.4
 ).add_to(m)
 
-m.save("gps_heatmap-RIH-all-5m-averaged.html")
+m.save("gps_heatmap-RIH-All-1-5m-averaged.html")
 print("Saved to gps_heatmap-averaged.html")

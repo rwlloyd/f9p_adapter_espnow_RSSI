@@ -2,7 +2,7 @@ import pandas as pd
 import folium
 
 # Load CSV
-df = pd.read_csv("20251117-1_fixed.csv", header=None, names=["rssi", "lat_raw", "lon_raw", "alt_raw", "heading"])
+df = pd.read_csv("./csv/RIH-all.csv", header=None, names=["rssi", "lat_raw", "lon_raw", "alt_raw", "heading"])
 
 # Convert to proper lat/lon/alt
 df["lat"] = df["lat_raw"]
@@ -31,5 +31,5 @@ for _, row in df.iterrows():
         popup=f"RSSI: {row['rssi']}<br>Heading: {row['heading']}°<br>Alt: {row['alt']:.2f} m"
     ).add_to(m)
 
-m.save("gps_signal_map.html")
+m.save("gps_signal_map-RIH-all-20251121.html")
 print("✅ Map saved as gps_signal_map.html — open it in your browser!")

@@ -22,7 +22,7 @@ def ecef_to_lla(x, y, z):
     return lat, lon, alt
 
 # Load CSV
-df = pd.read_csv("20251113.csv", header=None, names=["rssi", "x", "y", "z", "heading"])
+df = pd.read_csv("20251121-1_fixed.csv", header=None, names=["rssi", "x", "y", "z", "heading"])
 
 # Convert ECEF to LLA
 latitudes, longitudes, altitudes = [], [], []
@@ -58,5 +58,5 @@ for _, row in df.iterrows():
         popup=f"RSSI: {row['rssi']}<br>Heading: {row['heading']}°"
     ).add_to(m)
 
-m.save("gps_signal_map.html")
+m.save("gps_signal_map-20251121-1.html")
 print("✅ Map saved as gps_signal_map.html — open it in your browser!")
