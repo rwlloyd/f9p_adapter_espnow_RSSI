@@ -3,8 +3,8 @@
 
 import csv
 
-input_file = "20251121-1.cap"
-output_file = "20251121-1_fixed.csv"
+input_file = "go2-initial-walk.cap"
+output_file = "go2-initial-walk.csv"
 
 with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
     reader = csv.reader(f_in)
